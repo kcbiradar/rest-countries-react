@@ -1,0 +1,38 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.navbar {
+  display: flex;
+  max-width: 1470px;
+  margin: 0px auto;
+  justify-content: space-between;
+  padding: 2% 0%;
+}
+
+.displayCountries {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1470px;
+  margin: 0px auto;
+  justify-content: space-between;
+}
+
+.countryCardImage {
+  height: 170px;
+  width: 250px;
+}
+
+.countryCard {
+  line-height: 30px;
+  /* margin: 20px 20px 20px 0px; */
+  display: flex;
+  flex-direction: column;
+}
+
+
+.error {
+  display: flex;
+  justify-content: center;
+}
