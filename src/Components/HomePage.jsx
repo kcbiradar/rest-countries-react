@@ -87,6 +87,7 @@ function HomePage() {
 
   function handlePopulation(selectedPopulation) {
     setPopulation(selectedPopulation);
+    setArea("")
   }
 
   function handleSubregion(selectedSubregion) {
@@ -95,6 +96,7 @@ function HomePage() {
 
   function handleArea(selectedArea) {
     setArea(selectedArea);
+    setPopulation("")
   }
 
   const subregions = data.reduce((acc, current) => {
@@ -124,16 +126,18 @@ function HomePage() {
           handleArea={handleArea}
         />
       </div>
-      <div className="displayCountries">
-        {filterItems.length <= 0 ? (
-          <h3>Data is Loading</h3>
-        ) : (
-          filterItems.map((each_country) => {
-            return (
-              <CountryCard key={each_country.cca3} country={each_country} />
-            );
-          })
-        )}
+      <div className="homePage">
+        <div className="displayCountries">
+            {filterItems.length <= 0 ? (
+            <h3>No filtered data is available</h3>
+            ) : (
+            filterItems.map((each_country) => {
+                return (
+                <CountryCard key={each_country.cca3} country={each_country} />
+                );
+            })
+            )}
+        </div>
       </div>
     </>
   );

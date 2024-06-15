@@ -2,13 +2,46 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  background-color: #fafafa;
 }
+
 .navbar {
+  box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.127);
+  margin-bottom: 30px;
+}
+
+.navbar-container {
   display: flex;
   max-width: 1470px;
   margin: 0px auto;
   justify-content: space-between;
-  padding: 2% 0%;
+  padding: 1% 0%;
+  margin-bottom: 5px;
+  
+}
+
+.selectSection {
+  display: flex;
+  max-width: 1470px;
+  margin: 0px auto;
+  justify-content: space-between;
+  padding: 1% 0%;
+  margin-bottom: 5px;
+}
+
+#countrySearch {
+  padding: 16px 20px;
+  /* width: 100%; */
+  width: 200px;
+  border: none;
+  outline: none;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.075);
+}
+
+#population, #area, #continents,#subregion {
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.075);
+  border: none;
+  outline: none;
 }
 
 .displayCountries {
@@ -26,11 +59,12 @@
 
 .countryCard {
   line-height: 30px;
-  /* margin: 20px 20px 20px 0px; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.075);
+  width: 250px;
 }
-
 
 .error {
   display: flex;

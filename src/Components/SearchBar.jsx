@@ -1,4 +1,4 @@
-function SearchBar2(props) {
+function SearchBar(props) {
   function triggerInput(event) {
     props.searchHandle(event.target.value);
   }
@@ -14,7 +14,6 @@ function SearchBar2(props) {
 
   function handlePopulationOrder(event) {
     props.handlePopulation(event.target.value);
-    props.handleArea("");
   }
 
   function triggerSubregion(event) {
@@ -23,32 +22,33 @@ function SearchBar2(props) {
 
   function triggerhandleArea(event) {
     props.handleArea(event.target.value);
-    props.handlePopulation("");
   }
 
   return (
-    <div className="navbar">
+    <div className="selectSection">
       <div>
         <input
           type="text"
           onInput={triggerInput}
           placeholder="Search for a country..."
+          id="countrySearch"
         />
       </div>
       <select
         name="population"
         id="population"
         onChange={handlePopulationOrder}
+        value={props.selectPopulation}
       >
-        <option value="" selected={props.selectPopulation === ""}>
+        <option>
           Filter By Population
         </option>
         <option value="decreasingOrder">Increasing</option>
         <option value="increasingOrder">Decreasing</option>
       </select>
 
-      <select name="area" id="area" onChange={triggerhandleArea}>
-        <option value="" selected={props.selectArea === ""}>
+      <select name="area" id="area" onChange={triggerhandleArea} value={props.selectArea}>
+        <option>
           Filter By Area
         </option>
         <option value="decreasingOrder">Increasing</option>
@@ -84,4 +84,4 @@ function SearchBar2(props) {
   );
 }
 
-export default SearchBar2;
+export default SearchBar;
