@@ -70,3 +70,11 @@
   display: flex;
   justify-content: center;
 }
+
+Link {
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -6,6 +6,8 @@ import Navbar from "./Navbar";
 
 import SearchBar from "./SearchBar";
 
+import { Link } from "react-router-dom";
+
 const API_URL = `https://restcountries.com/v3.1/all`;
 
 function HomePage() {
@@ -133,7 +135,7 @@ function HomePage() {
             ) : (
             filterItems.map((each_country) => {
                 return (
-                <CountryCard key={each_country.cca3} country={each_country} />
+                    <Link to={`/countryDetails/${each_country.cca3}`} key={each_country.cca3}><CountryCard  country={each_country} /></Link>
                 );
             })
             )}
