@@ -78,3 +78,51 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.back-btn {
+  max-width: 1470px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.back-btn button {
+  border: none;
+  padding: 10px 0px;
+  width: 80px;
+  border: 1px solid #333;
+  margin: 50px 0px;
+}
+
+.detail {
+  display: grid;
+  max-width: 1470px;
+  margin: 0 auto;
+  grid-template-columns: 30% 70%;
+  height: 250px;
+}
+
+.country-detail-image {
+  height: 100%;
+}
+.displayCountryDetails {
+  display: flex;
+  flex-direction: column;
+  line-height: 32px;
+  justify-content: space-evenly;
+}
+
+.inner-div {
+  display: flex;
+  justify-content: space-between;
+}
+.borders {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.borders button {
+  border: none;
+  margin-left: 20px;
+  border: 1px solid #333;
+  padding: 5px 10px;
+}
