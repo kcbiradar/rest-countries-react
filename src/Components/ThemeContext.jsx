@@ -1,8 +1,5 @@
-import React, {useState , useContext} from "react";
+import React, { useState, useContext } from "react";
 
 const Theme = React.createContext();
 
-export default function ThemeContext() {
-
-}
-
+export default function ThemeContext() {}

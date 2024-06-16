@@ -8,11 +8,11 @@ function CountryCard(props) {
           className="countryCardImage"
         />
         <div>
-          <div>
+          <div className="country-name">
             <b>{props.country.name.common}</b>
           </div>
           <div>
-            <b>Population: </b> {props.country.population}
+            <b>Population: </b> {(props.country.population).toLocaleString()}
           </div>
           <div>
             <b>Region: </b> {props.country.region}
@@ -20,10 +20,6 @@ function CountryCard(props) {
           <div>
             <b>Capital: </b>
             {props.country?.capital}
-          </div>
-          <div>
-            <b>Subregion : </b>
-            {props.country.subregion}
           </div>
         </div>
       </div>

@@ -6,6 +6,8 @@ import Navbar from "./Navbar";
 
 import SearchBar from "./SearchBar";
 
+import ErrorPage from "./ErrorPage";
+
 import { Link } from "react-router-dom";
 
 const API_URL = `https://restcountries.com/v3.1/all`;
@@ -23,29 +25,38 @@ function HomePage() {
 
   const [selectArea, setArea] = useState("");
 
+  const [error, setError] = useState("");
+
   useEffect(() => {
     async function fetchApi(API_URL) {
       try {
         const promise = await fetch(API_URL);
+        if (!promise.ok) {
+          throw new Error("Unable to fetch API");
+        }
         const json = await promise.json();
         setData(json);
       } catch (error) {
-        console.log(error);
+        setError(error.message);
       }
     }
     fetchApi(API_URL);
   }, []);
 
-  const filterItems = data.filter((country) => {
-    if (selectContinent === "" || country.region === selectContinent) {
-      if (selectSubregion === "" || country.subregion === selectSubregion) {
-        return country.name.common
-          .toLowerCase()
-          .includes(searchCountry.toLowerCase());
+  let filterItems = [];
+
+  if (data.length > 0) {
+    filterItems = data.filter((country) => {
+      if (selectContinent === "" || country.region === selectContinent) {
+        if (selectSubregion === "" || country.subregion === selectSubregion) {
+          return country.name.common
+            .toLowerCase()
+            .includes(searchCountry.toLowerCase());
+        }
       }
-    }
-    return false;
-  });
+      return false;
+    });
+  }
 
   if (selectPopulation === "increasingOrder") {
     filterItems.sort(
@@ -71,12 +82,16 @@ function HomePage() {
     );
   }
 
-  const continents = data.reduce((acc, current) => {
-    if (!acc.includes(current.region)) {
-      acc.push(current.region);
-    }
-    return acc;
-  }, []);
+  let continents = [];
+
+  if (data.length > 0) {
+    continents = data.reduce((acc, current) => {
+      if (!acc.includes(current.region)) {
+        acc.push(current.region);
+      }
+      return acc;
+    }, []);
+  }
 
   function searchHandle(searchedInput) {
     setSearchCountry(searchedInput);
@@ -89,7 +104,7 @@ function HomePage() {
 
   function handlePopulation(selectedPopulation) {
     setPopulation(selectedPopulation);
-    setArea("")
+    setArea("");
   }
 
   function handleSubregion(selectedSubregion) {
@@ -98,49 +113,72 @@ function HomePage() {
 
   function handleArea(selectedArea) {
     setArea(selectedArea);
-    setPopulation("")
+    setPopulation("");
   }
 
-  const subregions = data.reduce((acc, current) => {
-    if (selectContinent === current.region) {
-      if (current.subregion && !acc.includes(current.subregion)) {
-        acc.push(current.subregion);
+  let subregions = [];
+
+  if (data.length > 0) {
+    subregions = data.reduce((acc, current) => {
+      if (selectContinent === current.region) {
+        if (current.subregion && !acc.includes(current.subregion)) {
+          acc.push(current.subregion);
+        }
       }
-    }
-    return acc;
-  }, []);
+      return acc;
+    }, []);
+  }
 
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
-      <div>
-        <SearchBar
-          searchHandle={searchHandle}
-          selectHandle={selectHandle}
-          continents={continents}
-          subregions={subregions}
-          handlePopulation={handlePopulation}
-          handleSubregion={handleSubregion}
-          selectArea={selectArea}
-          selectPopulation={selectPopulation}
-          handleArea={handleArea}
-        />
-      </div>
-      <div className="homePage">
-        <div className="displayCountries">
-            {filterItems.length <= 0 ? (
-            <h3>No filtered data is available</h3>
+      {error.length <= 0 ? (
+        <div>
+          <div>
+            <Navbar />
+          </div>
+          <div>
+            <SearchBar
+              searchHandle={searchHandle}
+              selectHandle={selectHandle}
+              continents={continents}
+              subregions={subregions}
+              handlePopulation={handlePopulation}
+              handleSubregion={handleSubregion}
+              selectArea={selectArea}
+              selectPopulation={selectPopulation}
+              handleArea={handleArea}
+            />
+          </div>
+          <div className="homePage">
+            {data.length > 0 ? (
+              <div className="displayCountries">
+                {filterItems.length <= 0 ? (
+                  <h3 className="filterd-data-not-found">
+                    No filtered data is available
+                  </h3>
+                ) : (
+                  filterItems.map((each_country) => {
+                    return (
+                      <Link
+                        to={`/countryDetails/${each_country.cca3}`}
+                        key={each_country.cca3}
+                      >
+                        <CountryCard country={each_country} />
+                      </Link>
+                    );
+                  })
+                )}
+              </div>
             ) : (
-            filterItems.map((each_country) => {
-                return (
-                    <Link to={`/countryDetails/${each_country.cca3}`} key={each_country.cca3}><CountryCard  country={each_country} /></Link>
-                );
-            })
+              <div className="add-loader">
+                <img src="../public/images/35.gif" alt="loading-image" />
+              </div>
             )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <ErrorPage />
+      )}
     </>
   );
 }

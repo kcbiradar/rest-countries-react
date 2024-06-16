@@ -40,17 +40,18 @@ function SearchBar(props) {
         onChange={handlePopulationOrder}
         value={props.selectPopulation}
       >
-        <option>
-          Filter By Population
-        </option>
+        <option>Filter By Population</option>
         <option value="decreasingOrder">Increasing</option>
         <option value="increasingOrder">Decreasing</option>
       </select>
 
-      <select name="area" id="area" onChange={triggerhandleArea} value={props.selectArea}>
-        <option>
-          Filter By Area
-        </option>
+      <select
+        name="area"
+        id="area"
+        onChange={triggerhandleArea}
+        value={props.selectArea}
+      >
+        <option>Filter By Area</option>
         <option value="decreasingOrder">Increasing</option>
         <option value="increasingOrder">Decreasing</option>
       </select>
