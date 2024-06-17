@@ -2,11 +2,29 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  background-color: #fafafa;
-  font-family: "Nunito Sans", sans-serif;;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.light {
+  --text-clr: hsl(200, 15%, 8%);
+  --bg-clr: hsl(0, 0%, 98%);
+  --text-input: hsl(0, 0%, 52%);
+  --bg-elements: #fff;
+}
+.dark {
+  --text-clr: #fff;
+  --bg-clr: hsl(207, 26%, 17%);
+  --text-input: #fff;
+  --bg-elements: hsl(209, 23%, 22%);
+}
+
+body {
+  background-color: var(--bg-clr);
+  color: var(--text-clr);
 }
 
 .navbar {
+  background-color: var(--bg-elements);
   box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.127);
   margin-bottom: 30px;
 }
@@ -31,7 +49,8 @@
 
 #countrySearch {
   padding: 16px 20px;
-  /* width: 100%; */
+  background-color: var(--bg-elements);
+  color: var(--text-clr);
   width: 200px;
   border: none;
   outline: none;
@@ -45,6 +64,8 @@
   box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.075);
   border: none;
   outline: none;
+  background-color: var(--bg-elements);
+  color: var(--text-clr);
 }
 
 .displayCountries {
@@ -65,7 +86,8 @@
 
 .filterd-data-not-found {
   text-align: center;
-  background-color: yellow;
+  background-color: var(--bg-elements);
+  color: var(--text-clr);
   padding: 20px;
 }
 
@@ -75,6 +97,7 @@
 }
 
 .countryCard {
+  background-color: var(--bg-elements);
   line-height: 30px;
   display: flex;
   flex-direction: column;
@@ -100,7 +123,7 @@ Link {
 }
 a {
   text-decoration: none;
-  color: black;
+  color: var(--text-clr);
 }
 
 .back-btn {
@@ -114,8 +137,8 @@ a {
   padding: 10px 0px;
   width: 100px;
   margin: 50px 0px;
-  color: white;
-  background-color: #333;
+  color: var(--text-clr);
+  background-color: var(--bg-elements);
   cursor: pointer;
 }
 
@@ -123,7 +146,8 @@ a {
   display: grid;
   max-width: 1470px;
   margin: 0 auto;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 5px;
   height: 250px;
 }
 
@@ -176,4 +200,7 @@ a {
   border: none;
   font-size: 17px;
   padding: 0px 7px;
+  cursor: pointer;
+  background-color: var(--bg-elements);
+  color: var(--text-clr);
 }

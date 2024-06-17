@@ -93,6 +93,19 @@ function HomePage() {
     }, []);
   }
 
+  let subregions = [];
+
+  if (data.length > 0) {
+    subregions = data.reduce((acc, current) => {
+      if (selectContinent === current.region) {
+        if (current.subregion && !acc.includes(current.subregion)) {
+          acc.push(current.subregion);
+        }
+      }
+      return acc;
+    }, []);
+  }
+
   function searchHandle(searchedInput) {
     setSearchCountry(searchedInput);
   }
@@ -114,19 +127,6 @@ function HomePage() {
   function handleArea(selectedArea) {
     setArea(selectedArea);
     setPopulation("");
-  }
-
-  let subregions = [];
-
-  if (data.length > 0) {
-    subregions = data.reduce((acc, current) => {
-      if (selectContinent === current.region) {
-        if (current.subregion && !acc.includes(current.subregion)) {
-          acc.push(current.subregion);
-        }
-      }
-      return acc;
-    }, []);
   }
 
   return (

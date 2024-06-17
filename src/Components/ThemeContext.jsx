@@ -1,5 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
-const Theme = React.createContext();
+const ThemeContext = React.createContext();
 
-export default function ThemeContext() {}
+export default function ThemeContext() {
+    const [darkTheme , setDarkTheme] = useState(false);
+
+    function toggleTheme() {
+        setDarkTheme(!darkTheme);
+    }
+
+}
