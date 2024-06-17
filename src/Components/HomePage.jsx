@@ -171,7 +171,7 @@ function HomePage() {
               </div>
             ) : (
               <div className="add-loader">
-                <img src="../images/loader.gif" alt="loading-image" />
+                <img src="./images/loader.gif" alt="loading-image" />
               </div>
             )}
           </div>
