@@ -113,7 +113,7 @@ export default function CountryDetailCard() {
         </>
       ) : (
         <div className="add-loader">
-          <img src="../public/images/35.gif" alt="loading-image" />
+          <img src="../images/loader.gif" alt="loading-image" />
         </div>
       )}
     </>
